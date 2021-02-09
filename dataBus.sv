@@ -5,6 +5,6 @@
 */
 
 interface dataBus;
-    logic A [15:0];
-    logic D [7:0];
+    logic A[15:0];
+    logic D[7:0];
 endinterface

@@ -14,14 +14,14 @@
 */
 
 module CPU6502 (
-    input logic phi_0, RST, NMI, IRQ, Ready, Data, SO, RorW,
+    input logic clock, RST, NMI, IRQ, Ready, Data, SO, RorW,
     dataBus dataBus0
 );
 
     // Timing
     logic phi_1, phi_2;
-    assign phi_1 = phi_0;
-    assign phi_2 = ~phi_0;
+    assign phi_1 = clock;
+    assign phi_2 = ~clock;
 
     // Busses
     logic DB [7:0], SB;
@@ -29,11 +29,14 @@ module CPU6502 (
     passMOSFETs passMOSFETsDB (.*);
 
     // Registers
-    logic SR [7:0];
+    logic statusReg [7:0];
     ioDataLatch ioDataLatch0 (.*);
     indexReg X (.*);
     indexReg Y (.*);
     accumulator accumulator (.*);
+
+    // Decoder
+    decoder decoder0 (.*);
 
     // ALU
     aluREG A (.*);
