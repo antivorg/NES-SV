@@ -5,7 +5,7 @@
 */
 
 module NES (
-    input logic clock,
+    input logic clock
     // io ports
 );
 

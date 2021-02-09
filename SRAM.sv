@@ -3,18 +3,18 @@
 */
 
 module SRAM (
-    input logic nWrtieEnable, clock,
+    input logic clock,
     dataBus dataBus0
 );
 
     logic [7:0] memory[10:0];
 
     always_ff @( posedge clock ) begin : chipSelect
-        if (A[15] | A[14] | A[13]) begin
-            if (nWriteEnable) begin
-                memory[A] = D;
+        if (dataBus0.A[15] | dataBus0.A[14] | dataBus0.A[13]) begin
+            if (dataBus0.write) begin
+                memory[dataBus0.A] = dataBus0.D;
             end else begin
-                D = memory[A];
+                dataBus0.D = memory[dataBus0.A];
             end
         end
     end
