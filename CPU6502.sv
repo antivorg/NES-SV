@@ -6,7 +6,7 @@
 */
 
 module CPU6502 (
-    input logic clock, nReset, nNMI, nIRQ, ready, data, setOvrFlwFlg, mode,
+    input logic clock, nReset, nNMI, nIRQ, ready, data, setOvrFlwFlg, write,
     dataBus dataBus0
 );
 

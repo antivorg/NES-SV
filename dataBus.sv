@@ -1,7 +1,5 @@
 /*
 *   Data Bus
-*
-*   - netlist of data and instruction flow shared by SRAM, PPU and CPU
 */
 
 interface dataBus;
