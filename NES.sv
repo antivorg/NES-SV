@@ -1,7 +1,7 @@
 /*
 *   NES
 *
-*   - Top level of design
+*   - Top level
 */
 
 module NES (

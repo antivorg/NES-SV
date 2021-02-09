@@ -1,7 +1,5 @@
 /*
-*
-* ALU
-*
+*   ALU
 */
 
 module ALU (
@@ -12,6 +10,6 @@ module ALU (
     output logic overFlow, carrOut, halfCarry, 
 );
 
-    
+
 
 endmodule

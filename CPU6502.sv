@@ -1,20 +1,12 @@
 /*
 *   6502 CPU (2A03)
 *
-*   phi_0 - Clock
-*   RST - Reset (active low)
-*   NMI - Non-Maskable Interrupt (active low)
-*   IRQ -  Maskable Interupt (active low)
-*   Ready
-*   Data
-*   SO - Set overflow flag
-*   RorW - Read or write (1, 0 respectively)
-*   D - Data
-*   A - Adress
+*   NMI - Non-Maskable Interrupt
+*   IRQ -  Maskable Interupt
 */
 
 module CPU6502 (
-    input logic clock, RST, NMI, IRQ, Ready, Data, SO, RorW,
+    input logic clock, nReset, nNMI, nIRQ, ready, data, setOvrFlwFlg, mode,
     dataBus dataBus0
 );
 
