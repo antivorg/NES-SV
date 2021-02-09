@@ -3,13 +3,13 @@
 */
 
 module SRAM (
-    input logic nWrtieEnable,
+    input logic nWrtieEnable, clock,
     dataBus dataBus0
 );
 
     logic [7:0] memory[10:0];
 
-    always_comb begin : chipSelect
+    always_ff @( posedge clock ) begin : chipSelect
         if (A[15] | A[14] | A[13]) begin
             if (nWriteEnable) begin
                 memory[A] = D;
