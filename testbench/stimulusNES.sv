@@ -7,20 +7,17 @@ program stimulusNES (
 
     class instruction;
 
-        function new();
-            rand logic data [7:0];
-            rand logic address [15:0];
-            rand logic opcode [3:0];
-            constraint range {opcode inside [67 /*include other codes to be tested*/]}
-        endfunction
+        rand logic data [7:0];
+        rand logic address [15:0];
+        rand logic opcode [3:0];
+        constraint range {opcode inside opcodes::codes}
 
     endclass
 
     initial begin
-        logic nReset = 0, nNMI = 1, nIRQ = 1, ready = 1,
-        data = 1, setOvrFlwFlg = 0, write = 0;
+        nReset = 0; nNMI = 1; nIRQ = 1; ready = 1;
+        data = 1; setOvrFlwFlg = 0; write = 0;
         instruction a;
-        a = new();
         repeat(50) begin
             a.randomize();
             #30ns;
