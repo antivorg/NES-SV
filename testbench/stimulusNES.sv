@@ -9,25 +9,29 @@ program stimulusNES (
 
         rand logic data [7:0];
         rand logic address [15:0];
-        rand logic opcode [3:0];
-        constraint range {opcode inside opcodes::codes}
+        rand opcodes::codes opcode;
 
     endclass
 
     initial begin
-        nReset = 0; nNMI = 1; nIRQ = 1; ready = 1;
+        instruction instruction0 = new;
+    
+        Reset = 0; nNMI = 1; nIRQ = 1; ready = 1;
         data = 1; setOvrFlwFlg = 0; write = 0;
-        instruction a;
-        repeat(50) begin
-            a.randomize();
-            #30ns;
-            dataBus0.D = a.data;
-            dataBus0.A = a.address;
-            #10ns;
-            write = 1;
-            #10ns;
-            write = 0;
-            wait(ready);
+
+        repeat (50) begin
+            if (instruction0.randomize()) begin
+                #30ns;
+                dataBus0.D = instruction0.data;
+                dataBus0.A = instruction0.address;
+                #10ns;
+                write = 1;
+                #10ns;
+                write = 0;
+                wait(ready);
+            end else
+                $display("Randomization failed\n");
+            
         end
     end
 
